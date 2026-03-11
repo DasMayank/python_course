@@ -41,21 +41,43 @@
 #     size = "Large" if gap > 200 else "Small"
 #     print(f"The price is {price}, {direction} 15,000 | The gap is {gap}, meaning it is {size}")
 
-def trade_summary(price, entry):
-    if price > entry:
-        result = "profitable"
-    elif price == entry:
-        result = "flat"
-    else:
-        result = "loss"
-    PnL = price - entry
+# def trade_summary(price, entry):
+#     if price > entry:
+#         result = "profitable"
+#     elif price == entry:
+#         result = "flat"
+#     else:
+#         result = "loss"
+#     PnL = price - entry
 
-    return f"The trade is a {result} trade, and the P&L is {PnL}"
+#     return f"The trade is a {result} trade, and the P&L is {PnL}"
 
-trade1 = trade_summary(1500, 1200)
-trade2 = trade_summary(22000, 400)
-trade3 = trade_summary(900, 1500)
+# trade1 = trade_summary(1500, 1200)
+# trade2 = trade_summary(22000, 400)
+# trade3 = trade_summary(900, 1500)
 
-print(trade1)
-print(trade2)
-print(trade3)
+# print(trade1)
+# print(trade2)
+# print(trade3)
+
+# def price_analysis(closing):
+#     print(f"{closing[0]} | {closing[-1]}")
+#     difference = closing[-1] - closing[0]
+#     for index, price in enumerate(closing):
+#         print(f"The index is {index}, and the price is {price}")
+#     return 
+
+# price_analysis([15000,14800,15100,15600,14300])
+
+
+trade = {"ticker" : "NQ", "entry": 14800, "current": 15143, "contracts": 10, "long": True}
+
+def analyze_trade(trade):
+    summary = "Profitable" if trade["current"] > trade["entry"] else "Non-Profitable"
+    pnl = trade["current"] - trade["entry"]
+    direction = "Long" if trade["long"] else "Short"
+    print(f"Overall the trade is {summary} and the PnL is {pnl}. The direction of the trade was a {direction}")
+    return
+
+analyze_trade(trade)
+    
